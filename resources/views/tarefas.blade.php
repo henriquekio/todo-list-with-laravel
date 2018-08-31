@@ -16,7 +16,7 @@
                                 <label for="descricao">Descrição</label>
                                 <textarea id="descricao" class="form-control" rows="3" name="descricao"></textarea>
                                 <label for="categoria">Categoria</label>
-                                <select id="categoria" class="form-control" name="categoria">
+                                <select id="categoria" class="form-control" name="categoria_id">
                                     <option selected disabled>Selecione uma categoria</option>
                                     @foreach($categorias as $categoria)
                                         <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
