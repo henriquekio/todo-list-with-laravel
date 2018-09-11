@@ -35,9 +35,9 @@ class IndexController extends Controller
         return view('/index');
     }
 
-    public function listaTarefas(){
-        $idUser = auth()->user()->id;
-        $tarefas = $this->tarefaRepository->findWhere(['usuario_id' => $idUser]);
+    public function listaTarefas()
+    {
+        $tarefas = $this->tarefaRepository->findWhere(['usuario_id' => auth()->user()->id]);
 
         return view('lista-tarefas', compact('tarefas'));
     }

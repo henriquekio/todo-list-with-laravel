@@ -22,24 +22,24 @@ class TarefaController extends Controller
         $this->repository = $repository;
     }
 
-    public function inserir(Request $request)
+    public function create(Request $request)
     {
-        $data = Carbon::today()->format('Y-m-d');
+        $currentDate = Carbon::today()->format('Y-m-d');
         $idUsuario = auth()->user()->id;
-        $request->request->add(['data_criacao' => $data, 'usuario_id' => $idUsuario]);
+        $request->request->add(['data_criacao' => $currentDate, 'usuario_id' => $idUsuario]);
         $this->repository->create($request->all());
 
         return redirect()->action('IndexController@listaTarefas');
     }
 
-    public function remover(Request $request)
+    public function remove(Request $request)
     {
         $excluir = $this->repository->delete($request->id);
 
         return response()->json($excluir);
     }
 
-    public function iniciarTarefa(Request $request)
+    public function init(Request $request)
     {
         $iniciar = $this->repository->update($request->all(), $request->id);
 

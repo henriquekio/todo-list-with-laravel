@@ -31,10 +31,10 @@ Route::group(['prefix' => 'inicio', 'as' => 'home.', 'middleware' => 'auth'], fu
 
 Route::group(['prefix' => 'tarefas', 'as' => 'tarefas.', 'middleware' => 'auth'], function () {
     Route::get('/', 'IndexController@tarefa')->name('inicio');
-    Route::post('/cadastrar', 'TarefaController@inserir')->name('cadastrar');
+    Route::post('/cadastrar', 'TarefaController@create')->name('cadastrar');
     Route::get('/lista-tarefas', 'IndexController@listaTarefas')->name('listagem');
-    Route::post('/excluir', 'TarefaController@remover')->name('remover');
-    Route::post('/iniciar', 'TarefaController@iniciarTarefa')->name('iniciar');
+    Route::post('/excluir', 'TarefaController@remove')->name('remover');
+    Route::post('/iniciar', 'TarefaController@init')->name('iniciar');
 });
 
 Route::group(['prefix' => 'categorias', 'as' => 'categorias.', 'middleware' => 'auth'], function(){
