@@ -55,5 +55,4 @@ class IndexController extends Controller
 
         return view('categorias', compact('categorias'));
     }
-
 }
