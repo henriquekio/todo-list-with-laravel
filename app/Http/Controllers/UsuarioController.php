@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UsuarioRequest;
 use App\Repositories\UserRepository;
 use App\User;
 use Illuminate\Http\Request;
@@ -15,14 +17,8 @@ class UsuarioController extends Controller
     protected $repository;
 
 
-    public function registrar(Request $request)
+    public function registrar(UsuarioRequest $request)
     {
-        $this->validate($request, [
-            'name' => ['required', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'min:6', 'max:255', 'confirmed']
-        ]);
-
         $credenciais = array_merge($request->all(), [
             'password' => bcrypt($request->input('password')),
         ]);
@@ -32,28 +28,23 @@ class UsuarioController extends Controller
         return view('home');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $this->validate($request, [
-            'email' => ['required', 'max:255', 'email'],
-            'password' => ['required', 'max:255']
-        ]);
-
         $credenciais = $request->only('email', 'password');
 
         if (!Auth::attempt($credenciais, false)) {
             return redirect()
                 ->back()
-                ->with('falha', 'O email ou a senha estão incorretos');
+                ->with('Erro', 'O email ou a senha estão incorretos');
         }
 
-        return redirect(route('home.inicio'));
+        return redirect()->back();
     }
 
     public function logout()
     {
         Auth::logout();
 
-        return redirect('/');
+        return view('home');
     }
 }

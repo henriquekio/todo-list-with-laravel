@@ -14,20 +14,22 @@
             <span>Seja Bem Vindo ao
                             To-Do'it {{Html::image('images/logo.png', 'logo', ['class' => 'pull-right'])}}</span>
             </div>
-            @if(!empty(Session::get('falha')))
+            @if($errors->any())
                 <div class="alert alert-danger alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <strong>Desculpe!</strong> {{Session::get('falha')}}
+                    @foreach($errors->all() as $error)
+                        <li>{!! $error !!}</li>
+                    @endforeach
                 </div>
             @endif
             <div class="form-login" id="form-login">
                 {!! Form::open(['route' => 'login', 'method' => 'post']) !!}
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="email" class="form-control" required>
+                    <input type="email" name="email" class="form-control">
                     <label>Senha</label>
-                    <input type="password" name="password" required id="" class="form-control">
+                    <input type="password" name="password" id="" class="form-control">
                 </div>
                     <button type="submit" class="btn btn-success">Entrar</button>
                     <button type="button" id="cadastro" class="btn btn-primary">Cadastrar</button>
