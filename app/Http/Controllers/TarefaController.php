@@ -22,35 +22,28 @@ class TarefaController extends Controller
         $this->repository = $repository;
     }
 
-    public function inserir(Request $request)
+    public function create(Request $request)
     {
-        $data = Carbon::today()->format('Y-m-d');
-
+        $currentDate = Carbon::today()->format('Y-m-d');
         $idUsuario = auth()->user()->id;
-        $this->repository->create([
-            'titulo' => $request->titulo,
-            'descricao' => $request->descricao,
-            'data_criacao' => $data,
-            'usuario_id' => $idUsuario,
-            'categoria_id' => $request->categoria,
-            'prioridade' => $request->prioridade
-        ]);
+        $request->request->add(['data_criacao' => $currentDate, 'usuario_id' => $idUsuario]);
+        $this->repository->create($request->all());
 
-        return redirect('tarefas/lista-tarefas');
+        return redirect()->action('IndexController@listaTarefas');
     }
 
-    public function remover(Request $request)
+    public function remove(Request $request)
     {
         $excluir = $this->repository->delete($request->id);
 
-        return json_encode($excluir);
+        return response()->json($excluir);
     }
 
-    public function iniciarTarefa(Request $request)
+    public function init(Request $request)
     {
-        $iniciar = $this->repository->update(['data_inicio' => $request->data], $request->id);
+        $iniciar = $this->repository->update($request->all(), $request->id);
 
-        return json_encode($iniciar);
+        return response()->json($iniciar);
     }
 
 }

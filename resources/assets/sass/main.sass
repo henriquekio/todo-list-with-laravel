@@ -1,0 +1,84 @@
+@import _imports/variables
+
+body, html
+  background: #f3f5fa
+  height: 100%
+  margin: 0
+  padding: 0
+
+
+.reset-padding
+  padding: 0
+
+
+.reset-margin
+  margin: 0
+
+
+.login-page
+  height: 100%
+
+
+.login
+  display: flex
+  flex-wrap: wrap
+  height: 100%
+  align-items: center
+
+
+.login-content
+  padding: 50px
+  background: white
+  width: 100%
+
+
+.login-content span
+  color: #757575
+  font-size: 40px
+  font-family: 'Indie Flower', cursive
+
+
+.login-content img
+  max-width: 50px
+  background: url("../img/logo.png")
+
+
+.login-title
+  max-width: 525px
+
+
+/** SIDEBAR **/
+.navbar
+  margin-bottom: 0
+
+
+.sidebar
+  position: fixed
+  top: 51px
+  bottom: 0
+  left: 0
+  z-index: 1000
+  display: block
+  padding: 20px
+  overflow-x: hidden
+  overflow-y: auto
+  background-color: #f5f5f5
+  border-right: 1px solid #eee
+
+
+.nav-sidebar
+  margin-right: -21px
+  margin-bottom: 20px
+  margin-left: -20px
+
+
+.nav-sidebar > li > a
+  padding-right: 20px
+  padding-left: 20px
+
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus
+  color: #fff
+  background-color: #428bca

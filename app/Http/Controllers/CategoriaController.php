@@ -25,9 +25,9 @@ class CategoriaController extends Controller
 
     public function ajaxCadastrar(Request $request)
     {
-        $categoria = $this->repository->create(['nome' => $request->nome]);
+        $categoria = $this->repository->create($request->all());
 
-        return json_encode($categoria);
+        return response()->json($categoria);
     }
 
 }

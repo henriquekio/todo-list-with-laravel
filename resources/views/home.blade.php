@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Seja Bem Vindo</title>
-    {{Html::style('css/bootstrap/css/bootstrap.min.css')}}
-    {{Html::style('css/style.css')}}
+    {!! Html::style('libs/bootstrap/css/bootstrap.min.css') !!}
+    {!! Html::style('css/style.min.css') !!}
 </head>
 <body>
 <div class="container-fluid login-page">
@@ -12,22 +12,24 @@
         <div class="login-content">
             <div class="login-title center-block">
             <span>Seja Bem Vindo ao
-                            To-Do'it {{Html::image('img/logo.png', 'logo', ['class' => 'pull-right'])}}</span>
+                            To-Do'it {{Html::image('images/logo.png', 'logo', ['class' => 'pull-right'])}}</span>
             </div>
-            @if(!empty(Session::get('falha')))
+            @if($errors->any())
                 <div class="alert alert-danger alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <strong>Desculpe!</strong> {{Session::get('falha')}}
+                    @foreach($errors->all() as $error)
+                        <li>{!! $error !!}</li>
+                    @endforeach
                 </div>
             @endif
             <div class="form-login" id="form-login">
                 {!! Form::open(['route' => 'login', 'method' => 'post']) !!}
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="email" id="" class="form-control" required>
+                    <input type="email" name="email" class="form-control">
                     <label>Senha</label>
-                    <input type="password" name="password" required id="" class="form-control">
+                    <input type="password" name="password" id="" class="form-control">
                 </div>
                     <button type="submit" class="btn btn-success">Entrar</button>
                     <button type="button" id="cadastro" class="btn btn-primary">Cadastrar</button>
@@ -51,8 +53,8 @@
         </div>
     </div>
 </div>
-{{Html::script('js/jquery/jquery-3.2.1.min.js')}}
-{{Html::script('css\bootstrap\js\bootstrap.min.js')}}
-{!! Html::script('js/main.js') !!}}
+{!! Html::script('libs/jquery/jquery.min.js') !!}
+{!!Html::script('libs/bootstrap/js/bootstrap.min.js') !!}
+{!! Html::script('js/main.js') !!}
 </body>
 </html>
