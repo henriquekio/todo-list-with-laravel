@@ -2,7 +2,7 @@
 
 Este projeto foi realizado com o intuito da prática do framework laravel. O projeto consiste em um todo list feito em laravel utilizando algumas das estruturas fornecidas pelo framework.
 
-### Libs utilizadas
+> ### Libs utilizadas
 Foram utilizadas algumas libs neste projeto em conjunto com o laravel:
 +  [Bootstrap](https://getbootstrap.com/)
 +  [SweetAlert](https://sweetalert.js.org/)
@@ -10,7 +10,7 @@ Foram utilizadas algumas libs neste projeto em conjunto com o laravel:
 +  [Sass](https://sass-lang.com/)
 +  [Laravel Mix](https://laravel.com/docs/5.4/mix)
 
-### Executando o projeto
+> ### Executando o projeto
 
 Para executar o projeto é necessário a realização de alguns procedimentos:
 
